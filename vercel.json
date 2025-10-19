@@ -1,0 +1,20 @@
+{
+  "buildCommand": "cd sticky_notes_front && npm install && npm run build",  
+  "outputDirectory": "frontend/build",  
+  "functions": {
+    "sticky_notes_backend/app.js": { 
+      "memory": 1024,
+      "maxDuration": 30
+    }
+  },
+  "routes": [
+    {
+      "src": "/note/(.*)",  
+      "dest": "sticky_notes_backend/app.js"
+    },
+    {
+      "src": "/(.*)", 
+      "dest": "frontend/build/$1"
+    }
+  ]
+}
